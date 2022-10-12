@@ -11,7 +11,7 @@ void Prim(Graphe* arbre,Graphe * graphe,int* sommetInitial){
         arbre->pSommet[i]->predecesseur = NULL;
     }
 
-    *sommetInitial = rand()%(arbre->ordre);
+    *sommetInitial = rand() % (arbre->ordre);
     printf("Nous allons derouler l'algorithme de Prim a partir du sommet %d (choisi aleatoirement)\n",*sommetInitial);
 
 
@@ -52,11 +52,19 @@ void Prim(Graphe* arbre,Graphe * graphe,int* sommetInitial){
 
 }
 
-void afficherArbre(Graphe* g, pSommet sommet){
-    while(sommet->predecesseur != NULL){
-        printf("%d<---",sommet->id);
-        afficherArbre(g,sommet->predecesseur);
+void afficherArbreRecur(Graphe* arbre,pSommet sommet){
+    if (sommet->predecesseur == NULL) {
+        printf("%d", sommet->id);
+        printf("\n\r");
+        return;
+    } else {
+        printf("%d <-- ", sommet->id);
+        afficherArbreRecur(arbre, sommet->predecesseur);
     }
 }
 
-
+void afficherArbre(Graphe* g, pSommet sommet){
+    for (int i = 0; i < g->ordre; ++i) {
+        afficherArbreRecur(g,g->pSommet[i]);
+    }
+}

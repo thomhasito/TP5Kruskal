@@ -51,7 +51,7 @@ void kruskal(Graphe* g,pArc* tab){
             printf("%d",g->pSommet[tab[numArete]->sommet0]->id);
             for (int i = 0; i < g->ordre; ++i) {
                 if(g->pSommet[i]->numCC == g->pSommet[tab[numArete]->sommet0]->numCC && g->pSommet[i] != g->pSommet[tab[numArete]->sommet0]){
-                    printf("--->%d",g->pSommet[i]->id);
+                    printf("--> %d",g->pSommet[i]->id);
                 }
             }
             printf("\n");
